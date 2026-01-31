@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>批量自动剪辑智能体 - 预览</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 800px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .feature {
+      padding: 1.5rem;
+      background: #f8f9fa;
+      border-radius: 12px;
+      border-left: 4px solid #667eea;
+    }
+
+    .feature h3 {
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature p {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .cta {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 1rem 3rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎬 批量自动剪辑智能体</h1>
+    <p class="subtitle">AI驱动的视频批量生成工具</p>
+
+    <div class="features">
+      <div class="feature">
+        <h3>📊 飞书集成</h3>
+        <p>自动读取文案并回写视频链接</p>
+      </div>
+      <div class="feature">
+        <h3>🎙️ AI配音</h3>
+        <p>使用Edge TTS生成自然语音</p>
+      </div>
+      <div class="feature">
+        <h3>🎬 智能剪辑</h3>
+        <p>自动匹配素材并合成视频</p>
+      </div>
+      <div class="feature">
+        <h3>☁️ 云存储</h3>
+        <p>自动上传到阿里云OSS</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <a href="/" class="btn">开始使用 →</a>
+    </div>
+  </div>
+</body>
+</html>
