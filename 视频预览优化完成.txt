@@ -1,0 +1,29 @@
+视频预览优化完成
+
+## 问题
+处理完成后没有预览视频的按钮，用户无法预览视频
+
+## 解决方案
+
+### 1. 添加静态文件服务
+在 main.py 中添加：
+```python
+app.mount("/output", StaticFiles(directory=output_dir), name="output")
+```
+
+### 2. 增强WebSocket消息
+video_completed 消息添加：
+- preview_url: 预览URL
+- is_local: 是否本地文件标识
+
+### 3. 前端处理页面优化
+- 添加视频预览卡片
+- 支持本地和云端视频
+- 添加下载和打开功能
+- 可折叠结果区域
+
+## 效果
+✅ 处理完成后显示视频预览区域
+✅ 本地视频可通过HTTP预览
+✅ 云端视频直接播放
+✅ 提供下载和打开按钮
