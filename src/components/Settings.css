@@ -1,0 +1,257 @@
+.settings-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.settings-header h1 {
+  flex: 1;
+  text-align: center;
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.header-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-back,
+.btn-logout {
+  padding: 0.5rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  background: white;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.btn-logout:hover {
+  background: #dc3545;
+  color: white;
+  border-color: #dc3545;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.settings-section {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.settings-section h2 {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.3rem;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.settings-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.field-group label {
+  font-weight: 600;
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.field-group input,
+.field-group select {
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+}
+
+.field-group input:focus,
+.field-group select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.field-hint {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #856404;
+  background: #fff3cd;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  border-left: 3px solid #ffc107;
+}
+
+.secret-input {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.secret-input input {
+  flex: 1;
+  padding: 0.75rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.btn-toggle-visibility {
+  padding: 0 1rem;
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.btn-toggle-visibility:hover {
+  background: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.settings-actions {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.btn-save {
+  padding: 1rem 3rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.btn-save:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+.btn-save:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-save.success {
+  background: #28a745;
+}
+
+.btn-save.error {
+  background: #dc3545;
+}
+
+.settings-help {
+  background: #f8f9fa;
+  padding: 2rem;
+  border-radius: 12px;
+}
+
+.settings-help h3 {
+  margin: 0 0 1rem 0;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.settings-help details {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.settings-help details[open] {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.settings-help summary {
+  font-weight: 600;
+  color: #667eea;
+  cursor: pointer;
+  user-select: none;
+}
+
+.settings-help summary:hover {
+  color: #5568d3;
+}
+
+.settings-help ol,
+.settings-help ul {
+  margin: 1rem 0 0 0;
+  padding-left: 1.5rem;
+}
+
+.settings-help li {
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.settings-help a {
+  color: #667eea;
+  text-decoration: none;
+}
+
+.settings-help a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .settings-page {
+    padding: 1rem;
+  }
+
+  .settings-header {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .settings-header h1 {
+    order: 2;
+    width: 100%;
+  }
+
+  .btn-back {
+    order: 1;
+  }
+
+  .btn-logout {
+    order: 3;
+  }
+}

@@ -1,0 +1,35 @@
+# 配置文件示例
+# 复制此文件为 config.yaml 并填写实际配置
+
+# 飞书配置
+feishu:
+  appId: ""  # 飞书应用ID
+  appSecret: ""  # 飞书应用密钥
+  baseToken: ""  # 飞书多维表格Base Token
+  tableId: ""  # 飞书表格ID
+
+# 素材配置
+materials:
+  local_path: "./local_materials"  # 本地素材路径
+  pexels_api_key: ""  # Pexels API密钥
+  freepik_api_key: ""  # Freepik API密钥
+  coverr_api_key: ""  # Coverr API密钥
+
+# 输出配置
+output:
+  # 阿里云OSS配置
+  access_key_id: ""  # OSS AccessKey ID
+  access_key_secret: ""  # OSS AccessKey Secret
+  bucket_name: ""  # OSS Bucket名称
+  endpoint: ""  # OSS端点 (如: oss-cn-hangzhou.aliyuncs.com)
+
+  # 语音配置
+  voice: "female"  # 语音类型: female/male/female2/male2
+
+  # 背景音乐
+  bgm_path: ""  # 背景音乐文件路径
+
+# AI视频生成配置 (可选)
+ai_video:
+  service: "runway"  # 服务提供商: runway/pika
+  api_key: ""  # API密钥
