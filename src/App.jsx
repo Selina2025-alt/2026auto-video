@@ -13,7 +13,7 @@ function App() {
   const [currentStep, setCurrentStep] = useState('welcome') // welcome, login, feishu, select, materials, output, processing
   const [user, setUser] = useState(null)
   const [showSettings, setShowSettings] = useState(false)
-  const [sessionData, setSessionData] = useState({
+  const [sessiondata, setSessiondata] = useState({
     feishu: null,
     copywritingList: [],
     selectedCopywriting: [],
@@ -39,7 +39,7 @@ function App() {
         }
       }
     } catch (error) {
-      console.log('未登录')
+      console.log('未登录或会话已过期')
     }
   }
 
@@ -47,28 +47,28 @@ function App() {
     setCurrentStep('login')
   }
 
-  const handleLoginSuccess = (userData) => {
-    setUser(userData)
+  const handleLoginSuccess = (userdata) => {
+    setUser(userdata)
     setCurrentStep('feishu')
   }
 
-  const handleFeishuComplete = (feishuData) => {
-    setSessionData(prev => ({ ...prev, feishu: feishuData }))
+  const handleFeishuComplete = (feishudata) => {
+    setSessiondata(prev => ({ ...prev, feishu: feishudata }))
     setCurrentStep('select')
   }
 
   const handleSelectComplete = (selectedItems) => {
-    setSessionData(prev => ({ ...prev, selectedCopywriting: selectedItems }))
+    setSessiondata(prev => ({ ...prev, selectedCopywriting: selectedItems }))
     setCurrentStep('materials')
   }
 
   const handleMaterialsComplete = (materialsConfig) => {
-    setSessionData(prev => ({ ...prev, materialsConfig }))
+    setSessiondata(prev => ({ ...prev, materialsConfig }))
     setCurrentStep('output')
   }
 
   const handleOutputComplete = (outputConfig) => {
-    setSessionData(prev => ({ ...prev, outputConfig }))
+    setSessiondata(prev => ({ ...prev, outputConfig }))
     setCurrentStep('processing')
   }
 
@@ -88,7 +88,7 @@ function App() {
       })
       setUser(null)
       setCurrentStep('welcome')
-      setSessionData({
+      setSessiondata({
         feishu: null,
         copywritingList: [],
         selectedCopywriting: [],
@@ -96,7 +96,7 @@ function App() {
         outputConfig: null
       })
     } catch (error) {
-      console.error('退出登录失败:', error)
+      console.error('退出登录失败', error)
     }
   }
 
@@ -136,7 +136,7 @@ function App() {
         
         {currentStep === 'select' && (
           <StepSelectCopy 
-            copywritingList={sessionData.feishu?.copywritingList || []}
+            copywritingList={sessiondata.feishu?.copywritingList || []}
             onComplete={handleSelectComplete}
             onBack={handleBack}
           />
@@ -159,8 +159,8 @@ function App() {
         )}
         
         {currentStep === 'processing' && (
-          <ProcessingPage 
-            sessionData={sessionData}
+          <ProcessingPage
+            sessionData={sessiondata}
             user={user}
           />
         )}

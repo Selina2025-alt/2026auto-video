@@ -174,6 +174,12 @@ function ProcessingPage({ sessionData }) {
 
   const startProcessing = async () => {
     try {
+      if (!sessionData || !sessionData.selectedCopywriting || sessionData.selectedCopywriting.length === 0) {
+        addLog('错误: 没有选择要处理的文案', 'error')
+        setIsProcessing(false)
+        return
+      }
+
       const response = await fetch('http://localhost:8001/api/process/start', {
         method: 'POST',
         headers: {
@@ -234,7 +240,7 @@ function ProcessingPage({ sessionData }) {
     <div className="processing-page">
       <div className="processing-header">
         <h2>⚙️ 正在处理视频</h2>
-        <p>共 {sessionData.selectedCopywriting.length} 条文案</p>
+        <p>共 {sessionData?.selectedCopywriting?.length || 0} 条文案</p>
         {allCompleted && (
           <button className="btn-toggle-results" onClick={toggleResults}>
             {showResults ? '隐藏结果' : '查看结果'}
@@ -281,7 +287,7 @@ function ProcessingPage({ sessionData }) {
         <div className="progress-section">
           <h3>文案处理进度</h3>
           <div className="progress-items">
-            {sessionData.selectedCopywriting.map((item, index) => {
+            {(sessionData?.selectedCopywriting || []).map((item, index) => {
               const videoCompleted = completedVideos.find(v => v.index === index + 1)
               return (
                 <div key={item.record_id} className="progress-item">

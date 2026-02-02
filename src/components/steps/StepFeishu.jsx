@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import './Steps.css'
-import FirstTimeNotice from '../FirstTimeNotice'
 import { getConfig, saveConfig, shouldAskRemember, confirmRemember, isRememberEnabled } from '../../utils/configMemory'
 
 function StepFeishu({ user, onComplete, onBack }) {
@@ -232,10 +231,60 @@ function StepFeishu({ user, onComplete, onBack }) {
   return (
     <>
       {showRememberNotice && (
-        <FirstTimeNotice 
-          onConfirm={handleRememberConfirm}
-          onCancel={handleRememberCancel}
-        />
+        <div className="remember-notice-overlay" style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 1000
+        }}>
+          <div className="remember-notice" style={{
+            backgroundColor: 'white',
+            borderRadius: '16px',
+            padding: '2rem',
+            maxWidth: '400px',
+            boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)'
+          }}>
+            <h3 style={{ marginTop: 0, marginBottom: '1rem' }}>💾 记住配置？</h3>
+            <p style={{ color: '#666', marginBottom: '1.5rem' }}>
+              是否要记住您的飞书配置？下次使用时将自动填充。
+            </p>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button
+                onClick={handleRememberCancel}
+                style={{
+                  flex: 1,
+                  padding: '0.75rem 1rem',
+                  border: '2px solid #e0e0e0',
+                  borderRadius: '8px',
+                  backgroundColor: 'white',
+                  cursor: 'pointer'
+                }}
+              >
+                不记住
+              </button>
+              <button
+                onClick={handleRememberConfirm}
+                style={{
+                  flex: 1,
+                  padding: '0.75rem 1rem',
+                  border: 'none',
+                  borderRadius: '8px',
+                  backgroundColor: '#667eea',
+                  color: 'white',
+                  cursor: 'pointer'
+                }}
+              >
+                记住配置
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     <div className="step-container">
       <div className="step-header">

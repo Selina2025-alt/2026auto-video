@@ -42,3 +42,4 @@ temp/
 tmp/
 *.tmp
 nul
+backend/users_db.json

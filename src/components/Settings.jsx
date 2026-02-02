@@ -35,13 +35,31 @@ function Settings({ user, onLogout, onBack }) {
 
   const loadSettings = async () => {
     try {
-      const response = await fetch('/api/settings/get', {
-        credentials: 'include'
-      })
-      if (response.ok) {
-        const data = await response.json()
-        if (data.settings) {
-          setSettings(data.settings)
+      // 加载各类配置
+      const [feishuRes, materialsRes, outputRes] = await Promise.all([
+        fetch('/api/user/config/feishu', { credentials: 'include' }),
+        fetch('/api/user/config/materials', { credentials: 'include' }),
+        fetch('/api/user/config/output', { credentials: 'include' })
+      ])
+
+      if (feishuRes.ok) {
+        const data = await feishuRes.json()
+        if (data.config) {
+          setSettings(prev => ({ ...prev, feishu: { ...prev.feishu, ...data.config } }))
+        }
+      }
+
+      if (materialsRes.ok) {
+        const data = await materialsRes.json()
+        if (data.config) {
+          setSettings(prev => ({ ...prev, materials: { ...prev.materials, ...data.config } }))
+        }
+      }
+
+      if (outputRes.ok) {
+        const data = await outputRes.json()
+        if (data.config) {
+          setSettings(prev => ({ ...prev, output: { ...prev.output, ...data.config } }))
         }
       }
     } catch (error) {
@@ -52,16 +70,29 @@ function Settings({ user, onLogout, onBack }) {
   const handleSave = async () => {
     setSaveStatus('saving')
     try {
-      const response = await fetch('/api/settings/save', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        body: JSON.stringify(settings)
-      })
+      // 分别保存各类配置
+      const [feishuRes, materialsRes, outputRes] = await Promise.all([
+        fetch('/api/user/config/feishu', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(settings.feishu)
+        }),
+        fetch('/api/user/config/materials', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(settings.materials)
+        }),
+        fetch('/api/user/config/output', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify(settings.output)
+        })
+      ])
 
-      if (response.ok) {
+      if (feishuRes.ok && materialsRes.ok && outputRes.ok) {
         setSaveStatus('success')
         setTimeout(() => setSaveStatus(''), 2000)
       } else {
